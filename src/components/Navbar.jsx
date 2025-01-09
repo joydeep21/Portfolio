@@ -78,7 +78,8 @@ const Navbar = () => {
                         <a href="mailto:joydeepshaw21@gmail.com" className='flex justify-between items-center w-full text-gray-300'>Email <HiOutlineMail size={30} /> </a>
                     </li>
                     <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69]'>
-                        <a href={window.location.href} className='flex justify-between items-center w-full text-gray-300' onClick={handleDownload}>Resume <BsFillPersonLinesFill size={30} /> </a>
+                    <a className='flex justify-between items-center w-full text-gray-300' href={`${window.location.href}/Joydeep_Shaw_CV.pdf`} download="Joydeep_Shaw_CV.pdf" >Resume <BsFillPersonLinesFill size={30} /> </a>
+                        {/* <a href={window.location.href} className='flex justify-between items-center w-full text-gray-300' onClick={handleDownload}>Resume <BsFillPersonLinesFill size={30} /> </a> */}
                     </li>
                 </ul>
             </div>
