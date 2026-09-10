@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/Portfolio/static/js/main.9798358b.js",
-    "index.html": "/Portfolio/index.html",
-    "service-worker.js": "/Portfolio/service-worker.js",
-    "main.9798358b.js.map": "/Portfolio/static/js/main.9798358b.js.map"
+    "main.js": "./static/js/main.9798358b.js",
+    "index.html": "./index.html",
+    "service-worker.js": "./service-worker.js",
+    "main.9798358b.js.map": "./static/js/main.9798358b.js.map"
   },
   "entrypoints": [
     "static/js/main.9798358b.js"
