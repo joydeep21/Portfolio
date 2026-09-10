@@ -416,6 +416,40 @@ section > .wrap > h2, .sec-h2 {
 
 .decision p { font-size: 14.4px; line-height: 1.6; color: var(--muted); }
 
+
+/* ═══════════ PROJECT FIGURES ═══════════ */
+.figure {
+  margin: 22px 28px 0;
+  border: 1px solid var(--edge);
+  border-radius: 9px;
+  background: rgba(255,255,255,.022);
+  overflow: hidden;
+}
+
+.figure-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--edge);
+  background: rgba(255,255,255,.026);
+}
+
+.figure-scroll { overflow-x: auto; padding: 4px 0; }
+
+.figure-scroll svg { display: block; min-width: 840px; width: 100%; height: auto; }
+
+.figure-cap {
+  padding: 2px 15px 13px;
+  font-size: 12.7px;
+  line-height: 1.5;
+  color: var(--faint);
+}
+
+@media (max-width: 720px) { .figure { margin-inline: 22px; } }
+
 /* ═══════════ PROJECTS ═══════════ */
 .projects { display: grid; gap: 22px; margin-top: 40px; }
 
@@ -928,7 +962,7 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
       <span class="rule"></span>
     </div>
 
-    <h2 class="sec-h2">Four systems, in detail</h2>
+    <h2 class="sec-h2">Five systems, in detail</h2>
     <p class="sec-lede">
       Everything below shipped to production for real users. For each one: what the problem actually was, and the part
       I was responsible for.
@@ -952,6 +986,36 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
           lead registration, points accrual, tier management, catalogue redemption, point-to-cash payouts and
           reporting &mdash; every tenant running its own rules on one shared codebase.
         </p>
+        <div class="figure">
+          <div class="figure-bar">
+            <span class="label">Platform architecture</span>
+            <div class="legend"><span><i class="swatch" style="background:#F0A93F"></i> mine</span><span><i class="swatch" style="background:#52C4B2"></i> message bus</span></div>
+          </div>
+          <div class="figure-scroll"><svg viewBox="0 0 880 424" role="img" aria-label="Architecture of the loyalty platform: a partner portal and an admin operations panel call NestJS REST controllers, which publish onto a RabbitMQ event bus; twelve services grouped as identity, earning, redemption and platform subscribe to it, each backed by its own MySQL schema. The auth and profile service, redemption, point-to-cash payout and the job scheduler are the ones I own.">
+<defs><marker id="Aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#839799"></path></marker><marker id="Af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52C4B2"></path></marker><marker id="As" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F0A93F"></path></marker><marker id="Ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E8806B"></path></marker></defs>
+<rect x="140" y="14" width="270" height="44" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="156" y="33" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">PARTNER PORTAL</text>
+<text x="156" y="49" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="#EEF4F1">Next.js &middot; members &amp; channel partners</text>
+<rect x="470" y="14" width="270" height="44" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="486" y="33" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#F0A93F">ADMIN OPS PANEL</text>
+<text x="486" y="49" font-family="IBM Plex Sans, sans-serif" font-size="12.5" font-weight="600" fill="#EEF4F1">approvals &middot; verification &middot; order status</text>
+<line x1="275" y1="58" x2="275" y2="74" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line>
+<line x1="605" y1="58" x2="605" y2="74" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line>
+<rect x="140" y="78" width="600" height="36" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="156" y="101" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="#C6D4D1">REST controllers &mdash; NestJS HTTP layer, JWT + OTP guarded</text>
+<line x1="440" y1="114" x2="440" y2="132" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line>
+<rect x="30" y="136" width="820" height="36" rx="7" fill="rgba(82,196,178,.09)" stroke="#52C4B2" stroke-width="1.3"></rect>
+<text x="46" y="153" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#52C4B2">RABBITMQ</text>
+<text x="46" y="166" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">event bus &mdash; services publish and subscribe, no direct calls between them</text>
+<rect x="30" y="196" width="196" height="136" rx="7" fill="rgba(255,255,255,.018)" stroke="rgba(255,255,255,.06)"></rect><text x="42" y="215" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">IDENTITY</text><line x1="128" y1="172" x2="128" y2="192" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="42" y="226" width="172" height="26" rx="5" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="52" y="243" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="600" fill="#F0A93F">auth &amp; profile</text><rect x="42" y="258" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="52" y="275" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">member onboarding</text><rect x="42" y="290" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="52" y="307" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">tier assignment</text><line x1="128" y1="332" x2="128" y2="348" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="238" y="196" width="196" height="136" rx="7" fill="rgba(255,255,255,.018)" stroke="rgba(255,255,255,.06)"></rect><text x="250" y="215" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">EARNING</text><line x1="336" y1="172" x2="336" y2="192" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="250" y="226" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="260" y="243" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">purchase registration</text><rect x="250" y="258" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="260" y="275" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">lead registration</text><rect x="250" y="290" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="260" y="307" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">points accrual</text><line x1="336" y1="332" x2="336" y2="348" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="446" y="196" width="196" height="136" rx="7" fill="rgba(255,255,255,.018)" stroke="rgba(255,255,255,.06)"></rect><text x="458" y="215" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">REDEMPTION</text><line x1="544" y1="172" x2="544" y2="192" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="458" y="226" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="468" y="243" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">catalogue</text><rect x="458" y="258" width="172" height="26" rx="5" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="468" y="275" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="600" fill="#F0A93F">redemption</text><rect x="458" y="290" width="172" height="26" rx="5" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="468" y="307" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="600" fill="#F0A93F">point-to-cash payout</text><line x1="544" y1="332" x2="544" y2="348" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="654" y="196" width="196" height="136" rx="7" fill="rgba(255,255,255,.018)" stroke="rgba(255,255,255,.06)"></rect><text x="666" y="215" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">PLATFORM</text><line x1="752" y1="172" x2="752" y2="192" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line><rect x="666" y="226" width="172" height="26" rx="5" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="676" y="243" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="600" fill="#F0A93F">job scheduler</text><rect x="666" y="258" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="676" y="275" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">notifications</text><rect x="666" y="290" width="172" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="676" y="307" font-family="IBM Plex Sans, sans-serif" font-size="11.5" font-weight="400" fill="#C6D4D1">reporting</text><line x1="752" y1="332" x2="752" y2="348" stroke="#839799" stroke-width="1.2" marker-end="url(#Aa)"></line>
+<rect x="30" y="352" width="820" height="34" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="46" y="374" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#C6D4D1">MySQL &middot; Sequelize ORM &mdash; a schema per service, multi-tenant by organisation</text>
+<rect x="30" y="400" width="14" height="12" rx="3" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="52" y="410" font-family="IBM Plex Mono, monospace" font-size="10" fill="#839799">the parts I own end to end</text>
+</svg></div>
+          <p class="figure-cap">The scheduler shown earlier is one service in this picture. Alongside it I own the authentication and profile service, the redemption and point-to-cash payout path, and the admin operations panel.</p>
+        </div>
+
 
         <div class="project-grid">
           <div>
@@ -999,6 +1063,54 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
           navigation, forms, validation, live data &mdash; and exports it as a real frontend codebase rather than a
           hosted toy.
         </p>
+        <div class="figure">
+          <div class="figure-bar">
+            <span class="label">How the builder works</span>
+            <div class="legend"><span><i class="swatch" style="background:#F0A93F"></i> the core I built</span><span><i class="swatch" style="background:#52C4B2"></i> live data</span></div>
+          </div>
+          <div class="figure-scroll"><svg viewBox="0 0 880 322" role="img" aria-label="Kuick Studio pipeline: a drag-and-drop canvas and a configuration-driven component library both write into a single JSON configuration schema describing pages, components, forms, workflows and API bindings; that schema drives a live preview bound to real REST endpoints and an export pipeline that emits a production frontend build.">
+<defs><marker id="Ba" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#839799"></path></marker><marker id="Bf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52C4B2"></path></marker><marker id="Bs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F0A93F"></path></marker><marker id="Bh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E8806B"></path></marker></defs>
+<rect x="20" y="56" width="180" height="128" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="34" y="78" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">CANVAS</text>
+<text x="34" y="96" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#EEF4F1">drag &amp; drop</text>
+<rect x="34" y="108" width="70" height="26" rx="4" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)"></rect>
+<rect x="110" y="108" width="76" height="26" rx="4" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)"></rect>
+<rect x="34" y="140" width="152" height="26" rx="4" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)"></rect>
+<rect x="20" y="206" width="180" height="62" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="34" y="228" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">COMPONENT LIBRARY</text>
+<text x="34" y="248" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">new element = config entry,</text>
+<text x="34" y="262" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">not another React component</text>
+<line x1="202" y1="120" x2="248" y2="120" stroke="#839799" stroke-width="1.4" marker-end="url(#Ba)"></line>
+<path d="M 202 237 L 226 237 L 226 200 L 248 200" fill="none" stroke="#839799" stroke-width="1.4" marker-end="url(#Ba)"></path>
+<rect x="252" y="46" width="216" height="230" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="264" y="70" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#F0A93F">CONFIG SCHEMA</text>
+<text x="264" y="86" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">one JSON document per app</text>
+<rect x="264" y="92" width="192" height="27" rx="5" fill="rgba(240,169,63,.07)" stroke="rgba(240,169,63,.32)"></rect><text x="274" y="110" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F0A93F">pages[]</text><text x="329" y="110" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">route tree and layout</text><rect x="264" y="126" width="192" height="27" rx="5" fill="rgba(240,169,63,.07)" stroke="rgba(240,169,63,.32)"></rect><text x="274" y="144" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F0A93F">components[]</text><text x="360" y="144" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">typed props</text><rect x="264" y="160" width="192" height="27" rx="5" fill="rgba(240,169,63,.07)" stroke="rgba(240,169,63,.32)"></rect><text x="274" y="178" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F0A93F">forms</text><text x="316" y="178" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">fields + validation</text><rect x="264" y="194" width="192" height="27" rx="5" fill="rgba(240,169,63,.07)" stroke="rgba(240,169,63,.32)"></rect><text x="274" y="212" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F0A93F">workflows</text><text x="341" y="212" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">conditional logic</text><rect x="264" y="228" width="192" height="27" rx="5" fill="rgba(240,169,63,.07)" stroke="rgba(240,169,63,.32)"></rect><text x="274" y="246" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F0A93F">apiBindings[]</text><text x="366" y="246" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">endpoint mapping</text>
+<line x1="470" y1="110" x2="514" y2="110" stroke="#839799" stroke-width="1.4" marker-end="url(#Ba)"></line>
+<line x1="470" y1="214" x2="514" y2="214" stroke="#839799" stroke-width="1.4" marker-end="url(#Ba)"></line>
+<rect x="518" y="72" width="184" height="76" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="532" y="94" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">LIVE PREVIEW</text>
+<text x="532" y="114" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">screens render against</text>
+<text x="532" y="130" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">real endpoints, not mocks</text>
+<rect x="518" y="176" width="184" height="76" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="532" y="198" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">EXPORT PIPELINE</text>
+<text x="532" y="218" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">config compiled into</text>
+<text x="532" y="234" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">real frontend source</text>
+<path d="M 706 100 L 730 100" fill="none" stroke="#52C4B2" stroke-width="1.4" marker-end="url(#Bf)"></path>
+<path d="M 730 122 L 706 122" fill="none" stroke="#52C4B2" stroke-width="1.4" marker-end="url(#Bf)"></path>
+<rect x="734" y="72" width="130" height="76" rx="7" fill="rgba(82,196,178,.1)" stroke="#52C4B2"></rect>
+<text x="746" y="94" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#52C4B2">REST APIs</text>
+<text x="746" y="114" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">the customer's</text>
+<text x="746" y="130" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">live data</text>
+<line x1="706" y1="214" x2="730" y2="214" stroke="#839799" stroke-width="1.4" marker-end="url(#Ba)"></line>
+<rect x="734" y="176" width="130" height="76" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="746" y="198" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">OUTPUT</text>
+<text x="746" y="218" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">responsive,</text>
+<text x="746" y="234" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">device-adaptive build</text>
+</svg></div>
+          <p class="figure-cap">Everything hangs off one configuration document. Because the canvas, the preview and the exporter all read the same schema, what a user sees while building is what ships.</p>
+        </div>
+
 
         <div class="project-grid">
           <div>
@@ -1044,6 +1156,36 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
           A booking platform for medical travel: patients book a service, pay for it, and follow the trip live &mdash;
           which means the money and the vehicle both have to stay in sync with the booking record.
         </p>
+        <div class="figure">
+          <div class="figure-bar">
+            <span class="label">Booking lifecycle</span>
+            <div class="legend"><span><i class="swatch" style="background:#F0A93F"></i> money</span><span><i class="swatch" style="background:#52C4B2"></i> tracking</span><span><i class="swatch" style="background:#E8806B"></i> failure branch</span></div>
+          </div>
+          <div class="figure-scroll"><svg viewBox="0 0 880 306" role="img" aria-label="Booking lifecycle for the medical travel platform: requested, payment pending, paid, in transit, completed. Razorpay capture and webhook callbacks reconcile into the paid state, a failed payment branches to refund, live location tracking feeds the in-transit state, and an operations dashboard reads every state in real time.">
+<defs><marker id="Ca" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#839799"></path></marker><marker id="Cf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52C4B2"></path></marker><marker id="Cs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F0A93F"></path></marker><marker id="Ch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E8806B"></path></marker></defs>
+<rect x="26" y="54" width="140" height="52" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="38" y="76" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#C6D4D1">REQUESTED</text><text x="38" y="94" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">patient picks a service</text><line x1="168" y1="80" x2="194" y2="80" stroke="#839799" stroke-width="1.4" marker-end="url(#Ca)"></line><rect x="198" y="54" width="140" height="52" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="210" y="76" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#C6D4D1">PAYMENT PENDING</text><text x="210" y="94" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">awaiting capture</text><line x1="340" y1="80" x2="366" y2="80" stroke="#839799" stroke-width="1.4" marker-end="url(#Ca)"></line><rect x="370" y="54" width="140" height="52" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="382" y="76" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#F0A93F">PAID</text><text x="382" y="94" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">funds confirmed</text><line x1="512" y1="80" x2="538" y2="80" stroke="#839799" stroke-width="1.4" marker-end="url(#Ca)"></line><rect x="542" y="54" width="140" height="52" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="554" y="76" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#C6D4D1">IN TRANSIT</text><text x="554" y="94" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">trip underway</text><line x1="684" y1="80" x2="710" y2="80" stroke="#839799" stroke-width="1.4" marker-end="url(#Ca)"></line><rect x="714" y="54" width="140" height="52" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="726" y="76" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#C6D4D1">COMPLETED</text><text x="726" y="94" font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#839799">service delivered</text>
+<path d="M 268 108 L 268 132 L 140 132 L 140 152" fill="none" stroke="#E8806B" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#Ch)"></path>
+<rect x="40" y="156" width="200" height="56" rx="7" fill="rgba(232,128,107,.1)" stroke="#E8806B"></rect>
+<text x="54" y="178" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#E8806B">FAILED / REFUNDED</text>
+<text x="54" y="197" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#C6D4D1">booking never leaves pending</text>
+<path d="M 400 156 L 400 110" fill="none" stroke="#F0A93F" stroke-width="1.5" marker-end="url(#Cs)"></path>
+<rect x="300" y="156" width="200" height="56" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="314" y="178" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#F0A93F">RAZORPAY</text>
+<text x="314" y="197" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#C6D4D1">capture + webhook reconciled</text>
+<path d="M 612 156 L 612 110" fill="none" stroke="#52C4B2" stroke-width="1.5" marker-end="url(#Cf)"></path>
+<rect x="560" y="156" width="200" height="56" rx="7" fill="rgba(82,196,178,.1)" stroke="#52C4B2"></rect>
+<text x="574" y="178" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#52C4B2">LIVE LOCATION</text>
+<text x="574" y="197" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#C6D4D1">trip progress, no phone calls</text>
+<line x1="140" y1="216" x2="140" y2="236" stroke="#5C6E70" stroke-width="1.1" marker-end="url(#Ca)"></line>
+<line x1="400" y1="216" x2="400" y2="236" stroke="#5C6E70" stroke-width="1.1" marker-end="url(#Ca)"></line>
+<line x1="660" y1="216" x2="660" y2="236" stroke="#5C6E70" stroke-width="1.1" marker-end="url(#Ca)"></line>
+<rect x="26" y="240" width="828" height="46" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="42" y="262" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">OPERATIONS DASHBOARD</text>
+<text x="42" y="279" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">every booking and its current state, live &mdash; deployed on AWS behind a CI/CD pipeline</text>
+</svg></div>
+          <p class="figure-cap">Booking state is the single source of truth. Payment outcomes arrive asynchronously from the gateway, so capture and failure callbacks are reconciled against that state rather than trusted on their own.</p>
+        </div>
+
 
         <div class="project-grid">
           <div>
@@ -1090,6 +1232,26 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
           staff all need the same report scoped to their own slice of the hierarchy &mdash; and must not see anyone
           else's.
         </p>
+        <div class="figure">
+          <div class="figure-bar">
+            <span class="label">Access model</span>
+            <div class="legend"><span><i class="swatch" style="background:#F0A93F"></i> one viewer's scope</span><span><i class="swatch" style="background:#52C4B2"></i> notifications</span></div>
+          </div>
+          <div class="figure-scroll"><svg viewBox="0 0 880 300" role="img" aria-label="Gurukul access model: a national, state, region and centre hierarchy on the left; on the right, one dashboard endpoint returns different rows depending on where the viewer sits in that tree, and Firebase pushes session and progress alerts.">
+<defs><marker id="Ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#839799"></path></marker><marker id="Ef" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52C4B2"></path></marker><marker id="Es" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F0A93F"></path></marker></defs>
+<text x="20" y="14" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">ORGANISATION TREE</text>
+<rect x="170" y="24" width="130" height="32" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="182" y="44" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">NATIONAL</text><rect x="30" y="94" width="118" height="30" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="42" y="113" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">state</text><rect x="166" y="94" width="118" height="30" rx="6" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="178" y="113" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F0A93F">state</text><rect x="302" y="94" width="118" height="30" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="314" y="113" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">state</text><rect x="110" y="162" width="118" height="30" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="122" y="181" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">region</text><rect x="246" y="162" width="118" height="30" rx="6" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="258" y="181" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F0A93F">region</text><rect x="246" y="228" width="118" height="28" rx="6" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="258" y="246" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F0A93F">centre</text><path d="M 235 56 L 235 75 L 89 75 L 89 94" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.3"></path><path d="M 235 56 L 235 75 L 225 75 L 225 94" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.3"></path><path d="M 235 56 L 235 75 L 361 75 L 361 94" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.3"></path><path d="M 225 124 L 225 143 L 169 143 L 169 162" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.3"></path><path d="M 225 124 L 225 143 L 305 143 L 305 162" fill="none" stroke="#F0A93F" stroke-width="1.3"></path><path d="M 305 192 L 305 210 L 305 210 L 305 228" fill="none" stroke="#F0A93F" stroke-width="1.3"></path>
+<line x1="446" y1="30" x2="446" y2="270" stroke="rgba(255,255,255,.08)" stroke-width="1"></line>
+<text x="484" y="14" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="#5C6E70">ONE ENDPOINT, SCOPED PER VIEWER</text>
+<text x="484" y="46" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#839799">position in the tree becomes the query scope</text>
+<rect x="484" y="74" width="152" height="30" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="496" y="94" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">national head</text><line x1="640" y1="89" x2="666" y2="89" stroke="#839799" stroke-width="1.3" marker-end="url(#Ea)"></line><text x="674" y="93" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#839799">every state</text><rect x="484" y="114" width="152" height="30" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect><text x="496" y="134" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C6D4D1">state head</text><line x1="640" y1="129" x2="666" y2="129" stroke="#839799" stroke-width="1.3" marker-end="url(#Ea)"></line><text x="674" y="133" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#839799">their regions only</text><rect x="484" y="154" width="152" height="30" rx="5" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect><text x="496" y="174" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F0A93F">regional head</text><line x1="640" y1="169" x2="666" y2="169" stroke="#F0A93F" stroke-width="1.3" marker-end="url(#Es)"></line><text x="674" y="173" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#F0A93F">their centres only</text>
+<rect x="484" y="206" width="376" height="56" rx="7" fill="rgba(82,196,178,.1)" stroke="#52C4B2"></rect>
+<text x="498" y="228" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#52C4B2">FIREBASE</text>
+<text x="498" y="247" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">session alerts and progress notifications, pushed in real time</text>
+</svg></div>
+          <p class="figure-cap">A regional head sees exactly their own centres. Rather than a permission check inside every endpoint, the viewer&rsquo;s position in the tree is resolved once and applied as query scope &mdash; so one dashboard serves every level of the hierarchy.</p>
+        </div>
+
 
         <div class="project-grid">
           <div>
@@ -1121,6 +1283,96 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
         </div>
       </article>
 
+
+      <!-- ── 5 ── -->
+      <article class="project">
+        <div class="project-head">
+          <div>
+            <span class="label">Arodek Technology Consulting &middot; 2022&ndash;24</span>
+            <h3>OCR Automation for SAP Customers</h3>
+          </div>
+          <span class="badge badge-past">Document pipeline</span>
+        </div>
+
+        <p class="project-sum">
+          SAP customers were reading scanned documents and typing the fields in by hand. Working alongside the AI/ML
+          team, we replaced the typing: their models read the documents, and the application layer I built around them
+          decided what still needed a person to look at it.
+        </p>
+
+        <div class="figure">
+          <div class="figure-bar">
+            <span class="label">Document pipeline</span>
+            <div class="legend"><span><i class="swatch" style="background:#F0A93F"></i> my layer</span><span><i class="swatch" style="background:#52C4B2"></i> automatic</span></div>
+          </div>
+          <div class="figure-scroll"><svg viewBox="0 0 880 244" role="img" aria-label="OCR automation pipeline: documents are ingested and preprocessed, passed to the machine learning team's OCR models, then fields are extracted and scored for confidence; high-confidence documents post straight to SAP while low-confidence ones go to a human review queue and post after correction.">
+<defs><marker id="Da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#839799"></path></marker><marker id="Df" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52C4B2"></path></marker><marker id="Ds" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F0A93F"></path></marker><marker id="Dh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E8806B"></path></marker></defs>
+<rect x="16" y="62" width="150" height="78" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="30" y="84" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#F0A93F">INTAKE</text>
+<text x="30" y="104" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">SAP customer</text>
+<text x="30" y="120" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">documents</text>
+<line x1="168" y1="101" x2="192" y2="101" stroke="#839799" stroke-width="1.4" marker-end="url(#Da)"></line>
+<rect x="196" y="62" width="140" height="78" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="210" y="84" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#F0A93F">PREPROCESS</text>
+<text x="210" y="104" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">normalise, queue</text>
+<text x="210" y="120" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">for the model</text>
+<line x1="338" y1="101" x2="362" y2="101" stroke="#839799" stroke-width="1.4" marker-end="url(#Da)"></line>
+<rect x="366" y="62" width="166" height="78" rx="7" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)" stroke-dasharray="5 4"></rect>
+<text x="380" y="84" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#839799">OCR MODELS</text>
+<text x="380" y="104" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">the AI/ML team's</text>
+<text x="380" y="120" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">models, not mine</text>
+<line x1="534" y1="101" x2="558" y2="101" stroke="#839799" stroke-width="1.4" marker-end="url(#Da)"></line>
+<rect x="562" y="62" width="160" height="78" rx="7" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="576" y="84" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#F0A93F">EXTRACT + SCORE</text>
+<text x="576" y="104" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">map fields, attach</text>
+<text x="576" y="120" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#C6D4D1">a confidence value</text>
+<text x="694" y="50" font-family="IBM Plex Mono, monospace" font-size="9" fill="#52C4B2">high</text>
+<path d="M 724 88 L 748 88 L 748 64" fill="none" stroke="#52C4B2" stroke-width="1.4" marker-end="url(#Df)"></path>
+<text x="694" y="182" font-family="IBM Plex Mono, monospace" font-size="9" fill="#F0A93F">low</text>
+<path d="M 724 114 L 748 114 L 748 154" fill="none" stroke="#F0A93F" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#Ds)"></path>
+<rect x="740" y="14" width="124" height="48" rx="7" fill="rgba(82,196,178,.1)" stroke="#52C4B2"></rect>
+<text x="752" y="34" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#52C4B2">POSTED TO SAP</text>
+<text x="752" y="51" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#C6D4D1">no human touch</text>
+<rect x="740" y="156" width="124" height="48" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)"></rect>
+<text x="752" y="176" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.1" fill="#C6D4D1">REVIEW QUEUE</text>
+<text x="752" y="193" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#839799">correct, then post</text>
+<path d="M 830 156 L 830 66" fill="none" stroke="rgba(255,255,255,.24)" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#Da)"></path>
+<rect x="16" y="212" width="14" height="12" rx="3" fill="rgba(240,169,63,.09)" stroke="#F0A93F" stroke-width="1.4"></rect>
+<text x="38" y="222" font-family="IBM Plex Mono, monospace" font-size="10" fill="#839799">the application layer I built around the models</text>
+</svg></div>
+          <p class="figure-cap">The win was not the model, it was the routing around it: scoring every extraction so only uncertain documents cost a person any time, which is what turned manual entry into a review step.</p>
+        </div>
+
+        <div class="project-grid">
+          <div>
+            <span class="micro">What I built</span>
+            <ul class="scope">
+              <li><b>Document intake and preprocessing</b> in Node.js &mdash; normalising incoming customer documents and queueing them for inference, so the ML team's surface was the model and nothing else.</li>
+              <li><b>Field extraction and confidence scoring.</b> Model output is mapped onto the SAP fields the customer actually needs, each carrying a confidence value rather than being accepted blindly.</li>
+              <li><b>Confidence-based routing.</b> High-confidence documents post straight through to SAP; only uncertain ones reach a person. That routing is what turned data entry into a review step instead of pretending the human could be removed entirely.</li>
+              <li><b>The React review console,</b> showing an operator the document and the extracted fields side by side so a correction takes seconds, then posts to SAP.</li>
+            </ul>
+          </div>
+          <aside class="project-side">
+            <div>
+              <span class="micro">Role</span>
+              <p>Full-stack developer &mdash; the whole application layer around the AI/ML team's models.</p>
+            </div>
+            <div>
+              <span class="micro">The interesting part</span>
+              <p>Choosing the confidence threshold. Set it too low and people stop trusting the output; too high and nobody saves any time.</p>
+            </div>
+            <div>
+              <span class="micro">Stack</span>
+              <div class="tags">
+                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">OCR pipeline</span>
+                <span class="tag">SAP integration</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </article>
+
     </div>
 
     <div class="sec-top" style="margin-top:46px">
@@ -1143,11 +1395,6 @@ footer { border-top: 1px solid var(--edge); padding-block: 26px 40px; margin-top
         <h4>Stock Inventory</h4>
         <p>Region-wise stock visibility across warehouses, cross-state transfers with automated alerts and audit trails, integrated with SAP Business APIs.</p>
         <span class="where">Arodek &middot; Node.js, SAP</span>
-      </div>
-      <div class="also-item">
-        <h4>OCR Automation</h4>
-        <p>Document-entry automation for SAP customers &mdash; the application layer built around the AI/ML team's models, turning manual entry into a review step.</p>
-        <span class="where">Arodek &middot; React, Node.js</span>
       </div>
     </div>
 
